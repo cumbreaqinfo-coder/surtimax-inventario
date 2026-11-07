@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0a0f16">
-<title>SURTIMAX | Buscador de llantas</title>
+<title>SURTIMAX | Buscador de llantas V12</title>
 <style>
 :root{
   --bg:#0b1016;
@@ -193,6 +193,114 @@ button{cursor:pointer}
 .priceBox b.unavailable{font-size:22px!important;letter-spacing:0;color:#bcc6d0}
 .promoBtn:disabled{opacity:.48;cursor:not-allowed;filter:grayscale(.8)}
 @media(max-width:650px){.syncPanel{align-items:flex-start}.syncNow{width:100%}}
+
+/* V10: catálogo de marcas ordenado sin modificar el tamaño original de sus tarjetas */
+.brandControls{display:flex;gap:10px;align-items:center;margin:0 0 9px}
+.brandFilterWrap{display:flex;gap:11px;align-items:center;flex:1;min-width:0;padding:0 15px;background:#171f29;border:1px solid #5b3541;border-radius:15px;transition:border-color .18s,box-shadow .18s}
+.brandFilterWrap:focus-within{border-color:#ff5867;box-shadow:0 0 0 3px rgba(239,65,82,.12)}
+.brandFilterWrap>span{font-size:26px;line-height:1;color:#ffa5ac}
+.brandFilterWrap input{height:46px;width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;font-size:15px}
+.brandFilterWrap input::placeholder{color:#9da6b5}
+.clearBrandFilter{color:#ffd9dd;background:#42212a;border:1px solid #823440;padding:11px 15px;border-radius:12px;font-weight:700}
+.brandFilterCount{color:#b5a7b0;font-size:12px;margin:0 0 14px;min-height:16px}
+.brandEmpty{padding:22px;border:1px dashed #845361;border-radius:16px;color:#bac6d4;text-align:center}
+.brandMoreWrap{display:flex;justify-content:center;margin-top:18px}
+.brandMoreBtn{width:min(100%,410px);padding:14px 20px;border:1px solid #ba4655;border-radius:14px;color:#fff;background:linear-gradient(120deg,#53232e,#831d30);font-weight:850;font-size:14px;box-shadow:0 8px 22px #6c1e2a30}
+.brandMoreBtn:hover{background:linear-gradient(120deg,#792c3a,#aa273d)}
+/* Mantiene las dimensiones originales V8: solo modifica el tratamiento cromático. */
+.brandCard{background:linear-gradient(145deg,rgba(67,26,37,.94) 0%,rgba(34,22,30,.96) 48%,rgba(21,20,28,.97) 100%);border-color:rgba(247,92,108,.21);box-shadow:0 14px 30px rgba(0,0,0,.23),inset 0 1px 0 rgba(255,137,149,.06)}
+.brandCard:hover{box-shadow:0 20px 38px rgba(0,0,0,.3),0 0 22px rgba(239,44,58,.13)}
+.brandLogoWrap{background:linear-gradient(145deg,rgba(255,96,112,.075),rgba(255,255,255,.025));border-color:rgba(255,135,149,.14)}
+/* Tarjetas de resultados compactas en escritorio, tablet y móvil. */
+.resultGrid{gap:14px;align-items:start}
+.product{border-radius:17px;display:grid;grid-template-rows:auto auto auto;box-shadow:0 9px 22px rgba(0,0,0,.2)}
+.photo{height:126px}
+.photoBadge{padding:5px 8px;font-size:10px;left:8px;bottom:8px}
+.photoDots{right:9px;bottom:11px}
+.info{padding:12px 13px 0}
+.brandName{font-size:11px;letter-spacing:.1em}
+.model{font-size:15px;line-height:1.23;margin:4px 0 8px;min-height:0}
+.measureLabel{font-size:9px;margin-bottom:3px}
+.measure{font-size:clamp(23px,2.1vw,29px);margin-bottom:9px;line-height:1.07}
+.specGrid{display:block;margin:0 0 10px}
+.spec{padding:7px 9px;border-radius:9px}
+.spec span{font-size:9px;margin-bottom:3px}
+.spec b{font-size:12px}
+.stockBadge{font-size:11px;padding:4px 7px}
+.priceWrap{grid-template-columns:minmax(0,1fr);gap:8px;padding:10px 13px 13px;margin-top:0;align-self:end}
+.priceBox{padding:9px 11px;border-radius:11px}
+.priceBox.normal span{font-size:11px;margin-bottom:4px;letter-spacing:.07em}
+.priceBox b{font-size:clamp(25px,2.7vw,32px)}
+.promoBtn{padding:11px 9px;font-size:13px;border-radius:10px;letter-spacing:.015em}
+@media(min-width:691px) and (max-width:1024px){.resultGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:690px){
+  .hero{padding-top:26px}
+  .sectionHead{margin:24px 0 13px}
+  .brandGrid{grid-template-columns:1fr;gap:14px}
+  .brandFilterWrap input{font-size:14px;height:44px}
+  .brandFilterWrap input::placeholder{font-size:13px}
+  .resultGrid{grid-template-columns:1fr;gap:10px}
+  .product{grid-template-columns:110px minmax(0,1fr);grid-template-rows:auto auto;border-radius:14px}
+  .photo{height:100%;min-height:134px;max-height:174px;grid-column:1;grid-row:1;border-radius:0}
+  .photoBadge{font-size:9px;line-height:1.15;left:5px;right:5px;bottom:7px;padding:4px 5px;white-space:normal}
+  .photoDots{display:none}
+  .info{grid-column:2;grid-row:1;padding:11px 11px 6px;min-width:0}
+  .brandName{font-size:10px}
+  .model{font-size:13px;margin:3px 0 6px;overflow-wrap:anywhere}
+  .measureLabel{font-size:9px}
+  .measure{font-size:clamp(21px,5.5vw,27px);margin-bottom:8px;letter-spacing:-.045em;overflow-wrap:anywhere}
+  .specGrid{margin-bottom:3px}
+  .spec{padding:5px 7px}
+  .spec span{font-size:9px}
+  .stockBadge{font-size:10px;line-height:1.3}
+  .priceWrap{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:9px 10px 10px;border-top:1px solid rgba(255,255,255,.09)}
+  .priceBox{padding:7px 9px;min-width:0}
+  .priceBox.normal span{font-size:10px;margin-bottom:5px}
+  .priceBox b{font-size:clamp(21px,6vw,29px);white-space:nowrap;letter-spacing:-.06em}
+  .promoBtn{padding:9px 5px;font-size:12px;min-height:52px;white-space:normal}
+}
+@media(max-width:360px){.product{grid-template-columns:92px minmax(0,1fr)}.photo{min-height:130px}.priceBox b{font-size:21px}.brandCard{padding:16px}}
+@media(prefers-reduced-motion:reduce){.neonOutline .neonTrail{animation:none}}
+
+/* V11: marca = identidad; nunca mezclar modelo ni texto explicativo en estas tarjetas. */
+.brandCard{display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.brandCard .brandLogoWrap{margin-bottom:0;flex:1;min-height:106px}
+.brandCard .brandTextLogo{min-height:80px}
+.brandCard .brandCount{margin-top:0;color:#ffc6ca;font-size:13px}
+.brandCard .brandGo{margin-top:0}
+/* V11: detalles técnicos completos y compactos en las tarjetas de resultados. */
+.product{grid-template-rows:auto auto auto auto}
+.technicalSection{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.10);padding:11px 13px 13px;background:rgba(255,255,255,.015)}
+.technicalHeading{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#ffb2bb;font-weight:900;margin-bottom:9px}
+.technicalGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.techItem{min-width:0;background:#202733;border:1px solid #374150;border-radius:9px;padding:8px 9px}
+.techItem span{display:block;color:#b8c3ce;font-size:10px;margin-bottom:3px}
+.techItem b{display:block;color:#f5f7fb;font-size:12px;line-height:1.3;overflow-wrap:anywhere}
+.specPending{font-size:12px;color:#b5c0cc;line-height:1.45}
+@media(max-width:690px){
+  .product{grid-template-rows:auto auto auto}
+  .technicalSection{grid-column:1/-1;grid-row:3;padding:9px 10px 11px}
+  .technicalHeading{font-size:10px;margin-bottom:7px}
+  .technicalGrid{gap:6px}
+  .techItem{padding:6px 7px;border-radius:8px}
+  .techItem span{font-size:10px}
+  .techItem b{font-size:11px}
+  .brandCard .brandLogoWrap{min-height:106px}
+}
+
+/* V12 — ubicaciones por producto; solo se visualizan las posiciones con unidades. */
+.locationSection{padding:10px 13px 14px;border-top:1px solid rgba(255,255,255,.08)}
+.locationGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.locationItem{display:flex;justify-content:space-between;align-items:center;gap:8px;min-width:0;padding:9px 10px;background:linear-gradient(125deg,rgba(61,38,47,.7),rgba(29,36,45,.95));border:1px solid rgba(255,102,118,.18);border-radius:10px}
+.locationItem span{font-size:11px;color:#d8bdc3;overflow-wrap:anywhere}
+.locationItem strong{color:#fff;font-size:12px;white-space:nowrap}
+.locationsEmpty{font-size:12px;color:#9facb9;padding:8px 0 1px}
+@media(max-width:690px){
+  .locationSection{grid-column:1/-1;grid-row:auto;padding:9px 10px 12px}
+  .locationGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .locationItem{padding:7px 8px;gap:6px;flex-wrap:wrap}
+  .locationItem span,.locationItem strong{font-size:11px}
+}
 </style>
 </head>
 <body>
@@ -229,11 +337,18 @@ button{cursor:pointer}
     <div class="sectionHead">
       <div>
         <h2>Marcas disponibles</h2>
-        <p>Toque o haga clic en una marca para desplegar sus llantas. Luego podrá buscar dentro de esa marca.</p>
+        <p>Seleccione una marca para consultar medidas, precios y existencias.</p>
       </div>
       <div class="pill" id="brandSummaryCount">Cargando marcas…</div>
     </div>
+    <div class="brandControls">
+      <label class="brandFilterWrap" for="brandFilterInput"><span aria-hidden="true">⌕</span><input id="brandFilterInput" type="search" placeholder="Filtrar las marcas (ej. MOMO, SUNFULL…)" autocomplete="off" aria-label="Filtrar marcas"></label>
+      <button id="clearBrandFilter" class="clearBrandFilter hidden" type="button">Limpiar</button>
+    </div>
+    <div id="brandFilterCount" class="brandFilterCount" aria-live="polite"></div>
     <div id="brandGrid" class="brandGrid"></div>
+    <div class="brandMoreWrap"><button type="button" id="brandMoreBtn" class="brandMoreBtn hidden">Ver más marcas</button></div>
+    <div id="brandEmpty" class="brandEmpty hidden">No encontramos esa marca. Puede buscar directamente la medida en el buscador superior.</div>
   </section>
   <section id="resultsSection" class="hidden">
     <div class="sectionHead" style="margin-bottom:12px">
@@ -288,14 +403,23 @@ function cleanBrand(raw) {
 function itemFromApi(item, index) {
   const brand = cleanBrand(item.marca);
   const num = v => typeof v === 'number' && Number.isFinite(v) && v >= 0 ? v : null;
+  const val = v => v === null || v === undefined || String(v).trim() === '' ? '' : String(v).trim();
   return {
     id: index, brandId: normalize(brand), brand,
-    model: String(item.modelo || '').trim() || 'Modelo no especificado',
-    size: String(item.medida || '').trim(),
+    model: val(item.modelo) || 'Modelo no especificado',
+    size: val(item.medida),
     normalPrice: num(item.precioNormal),
     promoPrice: num(item.precioPromocion),
     quantity: num(item.cantidad),
-    indexSpeed: '', temp: '', traction: '', load: '', treadwear: ''
+    type: val(item.tipoTaco),
+    load: val(item.indiceCarga),
+    indexSpeed: val(item.indiceVelocidad),
+    treadwear: val(item.treadwear),
+    traction: val(item.traccion),
+    temp: val(item.temperatura),
+    capas: val(item.capas),
+    code: val(item.codigo),
+    ubicaciones: item.ubicaciones && typeof item.ubicaciones === 'object' ? item.ubicaciones : null
   };
 }
 function updateInventory(data) {
@@ -311,8 +435,7 @@ function updateInventory(data) {
   brands.splice(0, brands.length, ...brandNames.map(name => {
     const known = originalBrandAssets.get(name);
     return {
-      id: normalize(name), name, logo: known ? known.logo : null,
-      subtitle: 'Consulte medidas, precios y existencias de ' + name + '.'
+      id: normalize(name), name, logo: known ? known.logo : null
     };
   }));
   hasInventory = true;
@@ -394,22 +517,46 @@ const money = n => typeof n === 'number' && Number.isFinite(n) ? '₡' + new Int
 let currentBrand = null;
 let globalQuery = '';
 let innerQuery = '';
+let showAllBrands = false;
+const brandPageLimit = () => window.matchMedia('(max-width:690px)').matches ? 6 : 9;
 function renderBrands() {
-  $('brandGrid').innerHTML = brands.map(b => {
-    const count = products.filter(p => p.brandId === b.id).length;
-    return `<button class="brandCard" type="button" data-brand="${b.id}">
+  const term = normalize(($('brandFilterInput')?.value || '').trim());
+  const matches = term ? brands.filter(b => normalize(b.name).includes(term)) : brands;
+  const visibleBrands = term || showAllBrands ? matches : matches.slice(0,brandPageLimit());
+  const countsByBrand = new Map();
+  products.forEach(p => countsByBrand.set(p.brandId, (countsByBrand.get(p.brandId) || 0) + 1));
+  $('brandGrid').innerHTML = visibleBrands.map(b => {
+    const count = countsByBrand.get(b.id) || 0;
+    return `<button class="brandCard" type="button" data-brand="${esc(b.id)}" aria-label="Ver llantas de ${esc(b.name)}">
       <svg class="neonOutline" aria-hidden="true" focusable="false"><rect class="neonBase" x="2.5" y="2.5" rx="20" ry="20"/><rect class="neonTrail" pathLength="100" x="2.5" y="2.5" rx="20" ry="20"/></svg>
-      <span class="brandMini">✦ ${count} referencias registradas</span>
-      <div class="brandLogoWrap">${b.logo ? `<img src="${b.logo}" alt="${esc(b.name)}">` : `<div class="brandTextLogo">${esc(b.name)}</div>`}</div>
-      <h3>${esc(b.name)}</h3>
-      <p>${esc(b.subtitle)}</p>
-      <div class="brandCount">Buscar por medida dentro de esta marca</div>
-      <div class="brandGo">Ver llantas →</div>
+      <div class="brandLogoWrap">${b.logo ? `<img src="${b.logo}" alt="${esc(b.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="brandTextLogo" style="display:none">${esc(b.name)}</div>` : `<div class="brandTextLogo">${esc(b.name)}</div>`}</div>
+      <div class="brandCount">Buscar medida dentro de esta marca</div>
+      <div class="brandGo">Ver llantas <span aria-hidden="true">→</span></div>
     </button>`;
   }).join('');
+  $('brandEmpty').classList.toggle('hidden', matches.length > 0 || !hasInventory);
+  $('brandFilterCount').textContent = !hasInventory ? '' : term
+    ? `${matches.length} de ${brands.length} marcas encontradas`
+    : `Mostrando ${visibleBrands.length} de ${brands.length} marcas · Orden alfabético`;
+  $('clearBrandFilter').classList.toggle('hidden', !term);
+  const showMore = $('brandMoreBtn');
+  showMore.classList.toggle('hidden', !!term || matches.length <= brandPageLimit());
+  showMore.textContent = showAllBrands ? 'Mostrar menos marcas' : `Ver todas las marcas (${matches.length})`;
   document.querySelectorAll('[data-brand]').forEach(btn => btn.addEventListener('click', () => openBrand(btn.dataset.brand)));
   refreshNeon();
 }
+$('brandMoreBtn').addEventListener('click', () => {
+  showAllBrands = !showAllBrands;
+  renderBrands();
+  if(!showAllBrands) document.getElementById('brandsSection').scrollIntoView({behavior:'smooth',block:'start'});
+});
+window.addEventListener('resize', () => { if (!showAllBrands && !$('brandFilterInput').value.trim()) renderBrands(); });
+$('brandFilterInput').addEventListener('input', renderBrands);
+$('clearBrandFilter').addEventListener('click', () => {
+  $('brandFilterInput').value = '';
+  renderBrands();
+  $('brandFilterInput').focus();
+});
 function filterProducts() {
   const source = currentBrand ? products.filter(p => p.brandId === currentBrand) : products;
   const rawQuery = currentBrand ? innerQuery : globalQuery;
@@ -458,6 +605,32 @@ function openGlobalSearch(query) {
   renderResults();
   openResultsView();
 }
+function renderSpecifications(p) {
+  const fields = [
+    ['Tipo de taco', p.type],
+    ['Índice de carga', p.load],
+    ['Índice de velocidad', p.indexSpeed],
+    ['Treadwear', p.treadwear],
+    ['Tracción', p.traction],
+    ['Temperatura', p.temp],
+    ['Capas', p.capas],
+    ['Código', p.code]
+  ].filter(([,value]) => value !== '' && value != null);
+  if (!fields.length) return `<div class="specPending">Especificaciones técnicas pendientes de sincronización</div>`;
+  return `<div class="technicalGrid">${fields.map(([name,value]) =>
+    `<div class="techItem"><span>${esc(name)}</span><b>${esc(value)}</b></div>`
+  ).join('')}</div>`;
+}
+function renderLocations(p) {
+  const locations = p.ubicaciones && typeof p.ubicaciones === 'object' ? p.ubicaciones : {};
+  const entries = Object.entries(locations).filter(([,cantidad]) => Number.isFinite(Number(cantidad)) && Number(cantidad) > 0);
+  if (!entries.length) {
+    return `<div class="locationsEmpty">${p.quantity === 0 ? 'Sin unidades registradas en ubicaciones' : 'Ubicación por confirmar'}</div>`;
+  }
+  return `<div class="locationGrid">${entries.map(([location,quantity]) => `
+    <div class="locationItem"><span>${esc(location)}</span><strong>${Number(quantity)} ${Number(quantity) === 1 ? 'unidad' : 'unidades'}</strong></div>
+  `).join('')}</div>`;
+}
 function renderResults() {
   const list = filterProducts();
   $('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}`;
@@ -471,14 +644,20 @@ function renderResults() {
         <div class="measureLabel">Medida llanta</div>
         <div class="measure">${esc(p.size)}</div>
         <div class="specGrid">
-          <div class="spec"><span>Marca</span><b>${esc(p.brand)}</b></div>
-          <div class="spec"><span>Modelo</span><b>${esc(p.model)}</b></div>
           <div class="spec"><span>Existencias</span><b><span class="stockBadge ${p.quantity === 0 ? 'out' : p.quantity == null ? 'unknown' : 'ok'}">${p.quantity === 0 ? 'Agotado · 0 unidades' : p.quantity == null ? 'Por confirmar' : p.quantity + (p.quantity === 1 ? ' unidad disponible' : ' unidades disponibles')}</span></b></div>
         </div>
-        <div class="priceWrap">
+      </div>
+      <div class="priceWrap">
           <div class="priceBox normal"><span>Precio normal</span><b class="${p.normalPrice == null ? 'unavailable' : ''}">${money(p.normalPrice)}</b></div>
           <button type="button" class="promoBtn" data-promo="${p.id}" ${p.promoPrice == null ? 'disabled title="Promoción no disponible"' : ''}>◇ ${p.promoPrice == null ? 'Sin promoción registrada' : 'Ver promoción'}</button>
-        </div>
+      </div>
+      <div class="technicalSection">
+        <div class="technicalHeading">Especificaciones de la llanta</div>
+        ${renderSpecifications(p)}
+      </div>
+      <div class="locationSection">
+        <div class="technicalHeading">Ubicaciones en inventario</div>
+        ${renderLocations(p)}
       </div>
     </article>
   `).join('');
