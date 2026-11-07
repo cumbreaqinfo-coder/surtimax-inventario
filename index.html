@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0a0f16">
-<title>SURTIMAX | Buscador de llantas V12</title>
+<title>SURTIMAX | Buscador de llantas V13</title>
 <style>
 :root{
   --bg:#0b1016;
@@ -300,6 +300,26 @@ button{cursor:pointer}
   .locationGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
   .locationItem{padding:7px 8px;gap:6px;flex-wrap:wrap}
   .locationItem span,.locationItem strong{font-size:11px}
+}
+
+/* V13: precios visibles sin pasos extra. La promoción reemplaza al botón. */
+.priceWrap{align-items:stretch}
+.priceBox.promo{
+  display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(145deg,rgba(191,27,48,.22),rgba(115,17,34,.12));
+  border:1px solid rgba(255,93,112,.68);
+  box-shadow:inset 0 1px 0 rgba(255,132,146,.08);
+}
+.priceBox.promo span{color:#ffb2bd;font-size:11px;letter-spacing:.055em;margin-bottom:5px;font-weight:900}
+.priceBox.promo b{color:#ff596d;font-size:clamp(25px,2.7vw,32px);line-height:1.04}
+.priceBox.promo b.unavailable{color:#aeb8c5;font-size:16px!important;letter-spacing:0}
+@media(max-width:690px){
+  .priceWrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .priceBox.promo span{font-size:10px}
+  .priceBox.promo b{font-size:clamp(20px,5.9vw,29px);white-space:nowrap}
+}
+@media(max-width:360px){
+  .priceBox.promo b{font-size:21px}
 }
 </style>
 </head>
@@ -649,7 +669,7 @@ function renderResults() {
       </div>
       <div class="priceWrap">
           <div class="priceBox normal"><span>Precio normal</span><b class="${p.normalPrice == null ? 'unavailable' : ''}">${money(p.normalPrice)}</b></div>
-          <button type="button" class="promoBtn" data-promo="${p.id}" ${p.promoPrice == null ? 'disabled title="Promoción no disponible"' : ''}>◇ ${p.promoPrice == null ? 'Sin promoción registrada' : 'Ver promoción'}</button>
+          <div class="priceBox promo"><span>Precio en promoción</span><b class="${p.promoPrice == null ? 'unavailable' : ''}">${money(p.promoPrice)}</b></div>
       </div>
       <div class="technicalSection">
         <div class="technicalHeading">Especificaciones de la llanta</div>
@@ -662,7 +682,6 @@ function renderResults() {
     </article>
   `).join('');
   bindProductPhotos();
-  document.querySelectorAll('[data-promo]').forEach(b=>b.addEventListener('click',()=>openPromo(Number(b.dataset.promo))));
 }
 $('form').addEventListener('submit', e => { e.preventDefault(); if (!$('q').value.trim() || !hasInventory) return; openGlobalSearch($('q').value); });
 document.querySelectorAll('[data-q]').forEach(btn => btn.addEventListener('click', () => { if (!hasInventory) return; $('q').value = btn.dataset.q; openGlobalSearch(btn.dataset.q); }));
